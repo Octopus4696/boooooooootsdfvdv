@@ -7,11 +7,7 @@ export function About() {
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">{"À propos de moi"}</h2>
         <Card className="p-8 md:p-12">
           <div className="space-y-6">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              {
-                "Je suis un développeur full stack junior passionné par la création d'applications web modernes et performantes. Avec une solide base en JavaScript et React, je m'efforce constamment d'apprendre et de maîtriser les dernières technologies du web."
-              }
-            </p>
+
             <p className="text-lg leading-relaxed text-muted-foreground">
               {
                 "Je suis un développeur full stack en alternance, passionné par la création d’applications web modernes. J’apprends actuellement différentes technologies du développement, aussi bien côté front-end que back-end, et je m’intéresse de plus en plus au cloud et au DevOps, domaines dans lesquels j’ai prévu de me former davantage."
