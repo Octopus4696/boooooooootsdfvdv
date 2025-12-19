@@ -10,7 +10,7 @@ export function Hero() {
           <p className="text-xl md:text-2xl text-muted-foreground">{"Développeur Full Stack Junior"}</p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             {
-              " Développeur full stack en alternance, intéressé par la conception d’expériences web modernes et intuitives, tout en approfondissant mes compétences en cloud et DevOps. "
+              " Développeur full stack, intéressé par la conception d’expériences web modernes et intuitives, tout en approfondissant mes compétences en cloud et DevOps. "
             }
           </p>
           <div className="flex items-center justify-center gap-4 pt-4">
