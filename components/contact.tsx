@@ -101,10 +101,6 @@ export function Contact() {
             </Card>
           </div>
         </div>
-
-        <div className="mt-12 text-center text-sm text-muted-foreground">
-          <p>{"© 2025 Isaac Hassani. Tous droits réservés."}</p>
-        </div>
       </div>
     </section>
   )
