@@ -14,12 +14,12 @@ export function About() {
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
               {
-                "Mon parcours m'a permis de développer des compétences aussi bien en front-end qu'en back-end. J'aime transformer des idées en produits fonctionnels et élégants, en mettant l'accent sur l'expérience utilisateur et la qualité du code."
+                "Je suis un développeur full stack en alternance, passionné par la création d’applications web modernes. J’apprends actuellement différentes technologies du développement, aussi bien côté front-end que back-end, et je m’intéresse de plus en plus au cloud et au DevOps, domaines dans lesquels j’ai prévu de me former davantage."
               }
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
               {
-                "Je suis actuellement à la recherche de nouvelles opportunités pour continuer à grandir en tant que développeur et contribuer à des projets innovants au sein d'une équipe dynamique."
+                "Je cherche à évoluer au sein d’équipes dynamiques et à contribuer à des projets innovants, tout en continuant à développer mes compétences et à élargir mon champ d’expertise."
               }
             </p>
           </div>
