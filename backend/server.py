@@ -53,9 +53,12 @@ async def root():
 @api_router.post("/contact")
 async def send_contact_message(contact: ContactMessage):
     try:
-        # Email configuration - using Gmail SMTP as default
-        sender_email = "noreply@portfolio.com"  # This can be any email
-        receiver_email = "isaac.hassani@limayrac.fr"
+        # Email configuration
+        sender_email = os.environ.get('SMTP_EMAIL')
+        receiver_email = os.environ.get('RECEIVER_EMAIL')
+        smtp_password = os.environ.get('SMTP_PASSWORD')
+        smtp_host = os.environ.get('SMTP_HOST')
+        smtp_port = int(os.environ.get('SMTP_PORT', 587))
         
         # Create message
         msg = MIMEMultipart("alternative")
@@ -92,18 +95,25 @@ async def send_contact_message(contact: ContactMessage):
         part = MIMEText(html, "html")
         msg.attach(part)
         
-        # For development, we'll save to database instead of sending real email
-        # In production, you would configure SMTP server (Gmail, SendGrid, etc.)
+        # Send email via SMTP
+        try:
+            with smtplib.SMTP(smtp_host, smtp_port) as server:
+                server.starttls()
+                server.login(sender_email, smtp_password)
+                server.sendmail(sender_email, receiver_email, msg.as_string())
+            
+            logger.info(f"Email sent successfully to {receiver_email} from {contact.name} ({contact.email})")
+        except Exception as smtp_error:
+            logger.error(f"SMTP Error: {str(smtp_error)}")
+            # Still save to database even if email fails
+        
+        # Save to MongoDB as backup
         contact_dict = contact.model_dump()
         contact_dict["id"] = str(uuid.uuid4())
         contact_dict["timestamp"] = datetime.now(timezone.utc)
-        contact_dict["status"] = "received"
+        contact_dict["status"] = "sent"
         
-        # Save to MongoDB
         await db.contact_messages.insert_one(contact_dict)
-        
-        # Log the message
-        logger.info(f"Contact message received from {contact.name} ({contact.email})")
         
         return {
             "status": "success",
